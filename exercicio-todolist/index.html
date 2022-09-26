@@ -11,15 +11,27 @@
 </head>
 <body style="background-color: #dedede;">
     <section class="row mt-5">
-        <div class="col-4 offset-4">
+        <div class="col-md-6 offset-3">
             <div class="card card-body">
                 <h2>lista de tarefas (<span id="numeros">0</span>)</h2>
                 <hr>
 
                 <form action="" class="row" onsubmit="addTarefa()">
-                    <div class="col-9">
+                    <div class="col-6">
                     <input id="input_nova_tarefa" placeholder="Nova Tarefa" type="text" class="form-control">
                     </div>
+
+
+                    <div class="col-3">
+                        <select id="input_prioridade" class="form-select">
+                            <option>-- Prioridade --</option>
+                            <option>Baixa</option>
+                            <option>Media</option>
+                            <option>Alta</option>
+                        </select>
+                    </div>
+
+
                     <div class="col-3 d-grid"><button class="btn btn-outline-primary">Pronto!</button></div>
                 </form>
                 <hr>
@@ -30,6 +42,8 @@
         </div>
     </section>
 
+    <script src="dao.js"></script>
     <script src="index.js"></script>
+
 </body>
 </html>

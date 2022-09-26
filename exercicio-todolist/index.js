@@ -1,14 +1,20 @@
-let lista_tarefas = [];
 
 function atualizarQuantidade() {
     document.getElementById('numeros').innerHTML = lista_tarefas.length;
 }
 
 function listarTarefas() {
-    let conteudo = lista_tarefas.sort().map(function (tarefa) {
+    let conteudo = buscar().sort().map(function (tarefa) {
         return `
     <div>
-        <input type="checkbox"> ${tarefa}
+        <input type="checkbox"> ${tarefa.titulo}
+
+        <span class="badge  
+        ${tarefa.prioridade === 'Baixa' && 'bg-primary'} 
+        ${tarefa.prioridade === 'Media'  && 'bg-warning'}
+        ${tarefa.prioridade === 'Alta' && 'bg-danger'}"
+        >${tarefa.prioridade}
+        </span>
     </div>
     `;
 });
@@ -32,10 +38,7 @@ function addTarefa() {
         return;
     }
 
-    if
-
-
-    lista_tarefas.push(titulo);
+    salvar(titulo, input_prioridade.value);
 
     document.getElementById('input_nova_tarefa').value = '';
 
@@ -43,3 +46,7 @@ function addTarefa() {
     atualizarQuantidade();
     listarTarefas();
 }
+
+
+// vai acontecer assim que o usuario entrar na pagina
+listarTarefas();
