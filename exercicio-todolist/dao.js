@@ -2,13 +2,12 @@ let lista_tarefas = [
 
 ];
 
-function salvar(titulo, prioridade) {
+function salvar(tarefas, prioridade) {
     let dados = buscar();
-
     dados.push({
-        titulo: titulo,
+        titulo: tarefas,
         prioridade: prioridade,
-    });
+    })
 
     localStorage.setItem('tarefas', JSON.stringify(dados));
 

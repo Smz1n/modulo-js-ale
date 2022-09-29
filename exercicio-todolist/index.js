@@ -1,6 +1,6 @@
 
 function atualizarQuantidade() {
-    document.getElementById('numeros').innerHTML = lista_tarefas.length;
+    document.getElementById('numeros').innerHTML = buscar().length;
 }
 
 function listarTarefas() {
@@ -33,12 +33,23 @@ function addTarefa() {
         return;
     }
 
-    if(lista_tarefas.includes(titulo)) {
-        alert ('Tarefa ja existe');
-        return;
-    }
+    let titulos = buscar().map((tarefa) => {
+        return tarefa ? tarefa.titulo : "";
+    });
 
-    salvar(titulo, input_prioridade.value);
+    let existe = false;
+    titulos.forEach((f) => {
+        if (true === f.includes(titulo)){
+            existe = true;
+            return;
+        }
+    });
+
+    if(existe == false) {
+        salvar(titulo, input_prioridade.value);
+    }else{
+        alert('Tarefa já existe')
+    }
 
     document.getElementById('input_nova_tarefa').value = '';
 
@@ -50,3 +61,4 @@ function addTarefa() {
 
 // vai acontecer assim que o usuario entrar na pagina
 listarTarefas();
+atualizarQuantidade();
